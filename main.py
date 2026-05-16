@@ -1,21 +1,13 @@
 class MatrixProcessor:
-    """
-    Клас для виконання математичних операцій з матрицями.
-    Відповідає лише за обчислення
-    """
 
     def __init__(self, matrix_a: list[list[float]], matrix_b: list[list[float]]):
-        """
-        Конструктор класу. Приймає матриці ззовні, а не створює їх всередині.
-        """
+        #конструктор класу
         self.matrix_a = matrix_a
         self.matrix_b = matrix_b
         self._validate_matrices()
 
     def _validate_matrices(self):
-        """
-        Прихований метод для перевірки коректності вхідних даних.
-        """
+        
         if not self.matrix_a or not self.matrix_b or not self.matrix_a[0] or not self.matrix_b[0]:
             raise ValueError("Матриці не можуть бути порожніми.")
 
@@ -29,10 +21,7 @@ class MatrixProcessor:
             raise ValueError("Розмірності матриць A та B не співпадають. Додавання неможливе.")
 
     def add_matrices(self) -> list[list[float]]:
-        """
-        Метод для додавання двох матриць.
-        Повертає нову матрицю, нічого не виводячи на екран.
-        """
+        #метод для додавання двох матриць
         rows = len(self.matrix_a)
         cols = len(self.matrix_a[0])
 
@@ -46,10 +35,8 @@ class MatrixProcessor:
         return matrix_c
 
     def calculate_column_averages(self, matrix: list[list[float]]) -> list[float]:
-        """
-        Метод для обчислення середнього значення кожного стовпчика переданої матриці.
-        Повертає список із середніми значеннями.
-        """
+        #метод для обчислення середнього значення кожного стовпчика 
+        
         if not matrix or not matrix[0]:
             return []
 
@@ -66,7 +53,7 @@ class MatrixProcessor:
         return averages
 
 if __name__ == "__main__":
-    #Створ дані
+    #створ дані
     A = [
         [1.5, 2.5, 3.0],
         [4.1, 5.2, 6.3],
@@ -83,7 +70,7 @@ if __name__ == "__main__":
         #Ініціалізуємо об'єкт нашого класу
         processor = MatrixProcessor(A, B)
 
-        #Викон додавання
+        #викон додавання
         C = processor.add_matrices()
 
         print("--- Матриця C (Результат додавання A + B) ---")
@@ -91,7 +78,7 @@ if __name__ == "__main__":
             formatted_row = [f"{elem:.2f}" for elem in row]
             print("\t".join(formatted_row))
 
-        #Викон другу дію
+        #викон другу дію
         averages = processor.calculate_column_averages(C)
 
         print("\n--- Середнє значення кожного стовпчика матриці C ---")
