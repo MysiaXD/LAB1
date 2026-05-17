@@ -1,13 +1,13 @@
 class MatrixProcessor:
 
     def __init__(self, matrix_a: list[list[float]], matrix_b: list[list[float]]):
-        #конструктор класу
+        # конструктор класу
         self.matrix_a = matrix_a
         self.matrix_b = matrix_b
         self._validate_matrices()
 
     def _validate_matrices(self):
-        
+
         if not self.matrix_a or not self.matrix_b or not self.matrix_a[0] or not self.matrix_b[0]:
             raise ValueError("Матриці не можуть бути порожніми.")
 
@@ -21,7 +21,7 @@ class MatrixProcessor:
             raise ValueError("Розмірності матриць A та B не співпадають. Додавання неможливе.")
 
     def add_matrices(self) -> list[list[float]]:
-        #метод для додавання двох матриць
+        #додаван матриць
         rows = len(self.matrix_a)
         cols = len(self.matrix_a[0])
 
@@ -35,8 +35,8 @@ class MatrixProcessor:
         return matrix_c
 
     def calculate_column_averages(self, matrix: list[list[float]]) -> list[float]:
-        #метод для обчислення середнього значення кожного стовпчика 
-        
+        #середн кожного стовп
+
         if not matrix or not matrix[0]:
             return []
 
@@ -52,8 +52,9 @@ class MatrixProcessor:
 
         return averages
 
+
 if __name__ == "__main__":
-    #створ дані
+    # створ дані
     A = [
         [1.5, 2.5, 3.0],
         [4.1, 5.2, 6.3],
@@ -67,10 +68,9 @@ if __name__ == "__main__":
     ]
 
     try:
-        #Ініціалізуємо об'єкт нашого класу
         processor = MatrixProcessor(A, B)
 
-        #викон додавання
+        # викон додавання
         C = processor.add_matrices()
 
         print("--- Матриця C (Результат додавання A + B) ---")
@@ -78,7 +78,7 @@ if __name__ == "__main__":
             formatted_row = [f"{elem:.2f}" for elem in row]
             print("\t".join(formatted_row))
 
-        #викон другу дію
+        # викон другу дію
         averages = processor.calculate_column_averages(C)
 
         print("\n--- Середнє значення кожного стовпчика матриці C ---")
